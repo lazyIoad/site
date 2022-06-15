@@ -1,0 +1,16 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "home!",
+  "scripts": {
+    "watch-styles": "npx tailwindcss -i ./web/styles/main.css -o ./build/app.css --watch",
+    "watch-go": "air --build.cmd \"go build -o build/site cmd/main.go\" --build.bin \"./build/site\"",
+    "dev": "concurrently \"npm:watch-styles\" \"npm:watch-go\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "tailwindcss": "^3.1.2"
+  }
+}
