@@ -1,7 +1,7 @@
 package main
 
-import "log"
+import "github.com/lazyIoad/site/lib/logging"
 
 func main() {
-	log.Print("hello")
+	logging.InitLogging()
 }
