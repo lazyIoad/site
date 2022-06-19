@@ -4,7 +4,7 @@
   "description": "home!",
   "scripts": {
     "watch-styles": "npx tailwindcss -i ./web/styles/main.css -o ./build/app.css --watch",
-    "watch-go": "air --build.cmd \"go build -o build/site cmd/main.go\" --build.bin \"./build/site\"",
+    "watch-go": "air --build.cmd \"go build -o build/site cmd/site/main.go\" --build.bin \"./build/site\"",
     "dev": "concurrently \"npm:watch-styles\" \"npm:watch-go\""
   },
   "author": "",

@@ -18,4 +18,3 @@ func InitLogging() {
 	ErrorLogger = log.New(os.Stderr, "[ERROR] ", log.Ldate|log.Ltime|log.LUTC|log.Lshortfile)
 	PanicLogger = log.New(os.Stderr, "[PANIC] ", log.Ldate|log.Ltime|log.LUTC|log.Lshortfile)
 }
-
