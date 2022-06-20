@@ -63,5 +63,5 @@ func ParseFile(file string) (*Doc, error) {
 	}
 
 	m := meta.Get(ctx)
-	return &Doc{Body: buf.String(), Meta: m}, nil
+	return &Doc{Body: buf.String(), Meta: m, Path: file}, nil
 }

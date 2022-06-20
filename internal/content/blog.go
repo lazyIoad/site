@@ -11,6 +11,7 @@ import (
 var REQUIRED_METADATA = [...]string{"title", "publishedAt", "slug"}
 var ERROR_MSG_FAILED_CAST = "failed to cast metadata %s from file %s"
 var METADATA_DATE_FORMAT = "2006-01-02"
+var PUBLISHED_TIME_FORMAT = "2 Jan 2006"
 
 type BlogPost struct {
 	Title       string
@@ -18,6 +19,10 @@ type BlogPost struct {
 	UpdatedAt   time.Time
 	Slug        string
 	Doc         *markdown.Doc
+}
+
+func (p BlogPost) PublishedAtDisplay() string {
+	return p.PublishedAt.Format(PUBLISHED_TIME_FORMAT)
 }
 
 func GetBlogPosts(path string) ([]*BlogPost, error) {

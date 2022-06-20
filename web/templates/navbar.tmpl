@@ -1,0 +1,14 @@
+{{define "navbar"}}
+<header>
+  <nav aria-label="main navigation">
+    <div class="flex flex-wrap justify-between items-center pt-8 sm:py-10">
+      <a href="/" class="font-medium text-2xl">lazyloading</a>
+      <div class="space-x-4">
+        {{range .}}
+        <a href="{{.Target}}" class='text-lg hover:underline sm:ml-0'>{{.Title}}</a>
+        {{end}}
+      </div>
+    </div>
+  </nav>
+</header>
+{{end}}

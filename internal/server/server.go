@@ -17,7 +17,7 @@ func StartServer(sc *config.SiteConfig) {
 		logging.PanicLogger.Fatalf("Failed to parse blog posts\n%v", err)
 	}
 
-	InitRoutes(r, p)
+	InitRoutes(r, p, sc)
 	logging.InfoLogger.Printf("Starting server on port %d", sc.Port)
 	logging.PanicLogger.Fatal("Server returned error\n", http.ListenAndServe(fmt.Sprintf(":%d", sc.Port), r))
 }

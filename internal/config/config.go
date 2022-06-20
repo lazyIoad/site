@@ -5,9 +5,15 @@ import (
 	"github.com/philandstuff/dhall-golang/v6"
 )
 
+type NavLink struct {
+	Title  string
+	Target string
+}
+
 type SiteConfig struct {
-	Port   uint16
-	Domain string
+	Port     uint16
+	Domain   string
+	NavLinks []*NavLink
 }
 
 func ReadSiteConfig() *SiteConfig {

@@ -1,16 +1,16 @@
 root = "."
-tmp_dir = "tmp"
+tmp_dir = "build"
 
 [build]
   args_bin = []
-  bin = "./build/site"
-  cmd = "go build -o build/site cmd/main.go"
+  bin = "build/site"
+  cmd = "go build -o build/site cmd/site/main.go"
   delay = 1000
   exclude_regex = ["_test.go"]
   exclude_unchanged = false
   follow_symlink = false
   include_dir = ["blog", "cmd", "web", "internal"]
-  include_ext = ["go", "html", "tmpl", "css", "dhall"]
+  include_ext = ["go", "html", "tmpl", "css", "dhall", "md"]
   kill_delay = "0s"
   log = "build-errors.log"
   send_interrupt = false

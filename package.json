@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "home!",
   "scripts": {
-    "watch-styles": "npx tailwindcss -i ./web/styles/main.css -o ./build/app.css --watch",
-    "watch-go": "air --build.cmd \"go build -o build/site cmd/site/main.go\" --build.bin \"./build/site\"",
+    "watch-styles": "npx tailwindcss -i ./web/styles/main.css -o ./build/static/css/app.css --watch",
+    "watch-go": "air",
     "dev": "concurrently \"npm:watch-styles\" \"npm:watch-go\""
   },
   "author": "",
