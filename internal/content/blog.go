@@ -81,5 +81,5 @@ func buildPost(doc *markdown.Doc) (*BlogPost, error) {
 		return nil, fmt.Errorf(ERROR_MSG_FAILED_CAST, "slug", doc.Path)
 	}
 
-	return &BlogPost{Title: title, PublishedAt: pub, UpdatedAt: upd, Slug: slug}, nil
+	return &BlogPost{Title: title, PublishedAt: pub, UpdatedAt: upd, Slug: slug, Doc: doc}, nil
 }

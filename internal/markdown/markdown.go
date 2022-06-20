@@ -5,7 +5,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/alecthomas/chroma/formatters/html"
 	"github.com/yuin/goldmark"
 	highlighting "github.com/yuin/goldmark-highlighting"
 	meta "github.com/yuin/goldmark-meta"
@@ -23,9 +22,6 @@ var md = goldmark.New(
 		meta.Meta,
 		highlighting.NewHighlighting(
 			highlighting.WithStyle("dracula"),
-			highlighting.WithFormatOptions(
-				html.WithLineNumbers(true),
-			),
 		),
 	),
 )
