@@ -6,7 +6,8 @@
   <div class="max-w-2xl mx-auto px-6">
     {{template "navbar" .SiteData.NavLinks}}
     <main>
-      <ul class="pb-20">
+      {{template "intro"}}
+      <ul class="pb-20 mt-6">
         {{range .BlogPosts}}
         <li class="py-4">
           <article>
