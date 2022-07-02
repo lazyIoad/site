@@ -2,7 +2,7 @@
 <html lang="en">
 {{template "head"}}
 
-<body class="font-serif">
+<body class="font-serif dark:bg-neutral-900 dark:text-neutral-50">
   <div class="max-w-2xl mx-auto px-6">
     {{template "navbar" .SiteData.NavLinks}}
     <main>
@@ -11,10 +11,12 @@
         {{range .BlogPosts}}
         <li class="py-4">
           <article>
-            {{.PublishedAtDisplay}}
+            <span class="dark:text-neutral-200">
+              {{.PublishedAtDisplay}}
+            </span>
 
             <div class="mt-0.5">
-              <a class="font-medium text-gray-800 text-xl hover:underline"
+              <a class="font-medium text-gray-800 dark:text-neutral-50 text-xl hover:underline"
                 href="/blog/{{.Slug}}">
                 <h2>
                   {{.Title}}

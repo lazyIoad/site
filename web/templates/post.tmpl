@@ -2,18 +2,18 @@
 <html lang="en">
 {{template "head" .Post.Title}}
 
-<body class="font-serif">
+<body class="font-serif dark:bg-neutral-900 dark:text-neutral-50">
   <div class="max-w-2xl mx-auto px-6">
     {{template "navbar" .SiteData.NavLinks}}
     <main>
       <div class="pb-32 pt-8 sm:pt-4">
-        <article class="prose mx-auto">
+        <article class="prose dark:prose-invert mx-auto">
           <h1>{{.Post.Title}}</h1>
           {{.Post.Doc.Body}}
         </article>
 
         <footer slot="footer">
-          <div class="mt-6 text-gray-600 float-right">
+          <div class="mt-6 text-fuchsia-900 dark:text-amber-400 float-right">
             {{.Post.PublishedAtDisplay}}
           </div>
         </footer>
