@@ -26,11 +26,18 @@ type blogPostData struct {
 	SiteData *siteData
 }
 
-func InitRoutes(r *httprouter.Router, p []*content.BlogPost, c *config.SiteConfig, fs *rss.Feeds) {
+type tagData struct {
+	BlogPosts []*content.BlogPost
+	Tag       string
+	SiteData *siteData
+}
+
+func InitRoutes(r *httprouter.Router, ps []*content.BlogPost, c *config.SiteConfig, fs *rss.Feeds) {
 	r.ServeFiles("/static/*filepath", http.Dir("build/static/"))
-	r.GET("/", index(p, c.NavLinks))
-	r.GET("/blog/:slug", blog(p, c.NavLinks))
+	r.GET("/", index(ps, c.NavLinks))
+	r.GET("/blog/:slug", blog(ps, c.NavLinks))
 	r.GET("/feeds/blog/:type", blogRss(fs))
+	r.GET("/tags/:tag", tags(ps, c.NavLinks))
 }
 
 func index(p []*content.BlogPost, n []*config.NavLink) httprouter.Handle {
@@ -80,6 +87,18 @@ func blogRss(fs *rss.Feeds) httprouter.Handle {
 			fmt.Fprint(w, fs.Json)
 		default:
 			http.Error(w, "Feed type not supported", http.StatusNotFound)
+		}
+	}
+}
+
+func tags(p []*content.BlogPost, n []*config.NavLink) httprouter.Handle {
+	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+		tag := ps.ByName("tag")
+		tps := content.FilterBlogPostsByTag(p, tag)
+		err := template.Render(w, "tag", tagData{BlogPosts: tps, Tag: tag, SiteData: &siteData{NavLinks: n}})
+		if err != nil {
+			logging.ErrorLogger.Println(err)
+			http.Error(w, "Error rendering page", http.StatusInternalServerError)
 		}
 	}
 }

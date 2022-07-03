@@ -97,3 +97,14 @@ func buildPost(doc *markdown.Doc) (*BlogPost, error) {
 
 	return &BlogPost{Title: title, PublishedAt: pub, UpdatedAt: upd, Slug: slug, Tags: ts, Doc: doc}, nil
 }
+
+func FilterBlogPostsByTag(ps []*BlogPost, tag string) (tps []*BlogPost) {
+	for _, p := range ps {
+		for _, t := range p.Tags {
+			if t == tag {
+				tps = append(tps, p)
+			}
+		}
+	}
+	return
+}

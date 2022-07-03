@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{{template "head"}}
+
+<body class="font-serif dark:bg-neutral-900 dark:text-neutral-50">
+  <div class="max-w-2xl mx-auto px-6">
+    {{template "navbar" .SiteData.NavLinks}}
+    <main>
+      <h1 class="text-xl">Posts tagged <span class="font-bold">{{.Tag}}</span></h1>
+      <ul class="pb-20 mt-6">
+        {{range .BlogPosts}}
+        <li class="py-2">
+          <article>
+            <div class="mt-0.5">
+              <a class="font-medium text-gray-800 dark:text-neutral-50 text-lg hover:underline"
+                href="/blog/{{.Slug}}">
+                <h2>
+                  <span>{{.PublishedAtDisplay}} |</span> {{.Title}}
+                </h2>
+              </a>
+            </div>
+          </article>
+        </li>
+        {{end}}
+      </ul>
+    </main>
+  </div>
+</body>
+</html>
+
