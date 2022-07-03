@@ -3,6 +3,7 @@ package content
 import (
 	"fmt"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/lazyIoad/site/internal/markdown"
@@ -18,11 +19,16 @@ type BlogPost struct {
 	PublishedAt time.Time
 	UpdatedAt   time.Time
 	Slug        string
+	Tags        []string
 	Doc         *markdown.Doc
 }
 
 func (p BlogPost) PublishedAtDisplay() string {
 	return p.PublishedAt.Format(PUBLISHED_TIME_FORMAT)
+}
+
+func (p BlogPost) TagsDisplay() string {
+	return strings.Join(p.Tags, ", ")
 }
 
 func GetBlogPosts(path string) ([]*BlogPost, error) {
@@ -81,5 +87,13 @@ func buildPost(doc *markdown.Doc) (*BlogPost, error) {
 		return nil, fmt.Errorf(ERROR_MSG_FAILED_CAST, "slug", doc.Path)
 	}
 
-	return &BlogPost{Title: title, PublishedAt: pub, UpdatedAt: upd, Slug: slug, Doc: doc}, nil
+	var tags []interface{}
+	tags, _ = doc.Meta["tags"].([]interface{})
+
+	ts := make([]string, len(tags))
+	for i, t := range tags {
+		ts[i] = fmt.Sprint(t)
+	}
+
+	return &BlogPost{Title: title, PublishedAt: pub, UpdatedAt: upd, Slug: slug, Tags: ts, Doc: doc}, nil
 }

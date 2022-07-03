@@ -13,8 +13,17 @@
         </article>
 
         <footer slot="footer">
-          <div class="mt-6 text-fuchsia-900 dark:text-amber-400 float-right">
-            {{.Post.PublishedAtDisplay}}
+          <div class="mt-6 text-fuchsia-900 dark:text-amber-400">
+            {{if .Post.Tags}}
+              Filed under
+              {{range $i, $v := .Post.Tags}}
+                {{if $i}}, {{end}}<a href="/tags/{{.}}" class="underline">{{.}}</a>
+              {{end}}
+            {{end}}
+
+            <div class="float-right">
+              {{.Post.PublishedAtDisplay}}
+            </div>
           </div>
         </footer>
       </div>
