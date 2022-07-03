@@ -15,4 +15,3 @@ func Render(w io.Writer, path string, data any) error {
 
 	return nil
 }
-

@@ -3,6 +3,7 @@ module github.com/lazyIoad/site
 go 1.18
 
 require (
+	github.com/gorilla/feeds v1.1.1
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/philandstuff/dhall-golang/v6 v6.0.2
 	github.com/yuin/goldmark v1.4.12

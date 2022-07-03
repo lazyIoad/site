@@ -11,9 +11,11 @@ type NavLink struct {
 }
 
 type SiteConfig struct {
-	Port     uint16
-	Domain   string
-	NavLinks []*NavLink
+	Port        uint16
+	Origin      string
+	Title       string
+	Description string
+	NavLinks    []*NavLink
 }
 
 func ReadSiteConfig() *SiteConfig {
