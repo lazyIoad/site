@@ -7,3 +7,4 @@
 - [x] favicon
 - [ ] fix colors
 - [ ] migrate off npm
+- [ ] clean up build paths

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "home!",
   "scripts": {
+    "build-styles": "npx tailwindcss -i ./web/styles/main.css -o ./build/app.css",
     "watch-styles": "npx tailwindcss -i ./web/styles/main.css -o ./build/static/css/app.css --watch",
     "watch-go": "air",
     "dev": "mkdir -p build && cp -r web/static build/ && concurrently \"npm:watch-styles\" \"npm:watch-go\""
