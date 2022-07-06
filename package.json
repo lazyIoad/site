@@ -5,7 +5,7 @@
   "scripts": {
     "watch-styles": "npx tailwindcss -i ./web/styles/main.css -o ./build/static/css/app.css --watch",
     "watch-go": "air",
-    "dev": "concurrently \"npm:watch-styles\" \"npm:watch-go\""
+    "dev": "mkdir -p build && cp -r web/static build/ && concurrently \"npm:watch-styles\" \"npm:watch-go\""
   },
   "author": "",
   "license": "ISC",
